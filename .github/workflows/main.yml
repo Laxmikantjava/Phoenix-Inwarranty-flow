@@ -40,6 +40,13 @@ jobs:
         with:
           name: postman-html-report
           path: results/report.html
+
+
+      - name : Newman Report
+        uses: actions/upload-artifact@v6.0.0
+        with:
+           name: Newman Report
+           path: newman/*.html
              
 
         
