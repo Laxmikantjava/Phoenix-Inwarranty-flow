@@ -9,10 +9,10 @@ on:
     -  cron : 00 14 * * * # 7:30 pm IST 
     -  cron : 00 06 * * 1-5 # 11:30  IST mon to frid
     
- jobs:
+jobs:
    run-postman-tests:
      runs-on: ubantu-latest
-  steps:
+ steps:
      -  name: Checkout the code
         uses: actions/checkout@v6.0.1
         
