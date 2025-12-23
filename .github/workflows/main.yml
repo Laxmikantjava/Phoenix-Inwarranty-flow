@@ -1,37 +1,46 @@
-name : Postman Collection Workflow
+name: Postman Collection Workflow
 
 on:
   push:
-     branches: [main]
+    branches: [main]
   workflow_dispatch:
   schedule:
-    -  cron : 30 02 * * * # 8 am IST
-    -  cron : 00 14 * * * # 7:30 pm IST 
-    -  cron : 00 06 * * 1-5 # 11:30  IST mon to frid
-    
+    - cron: '30 02 * * *'   # 08:00 AM IST
+    - cron: '00 14 * * *'   # 07:30 PM IST 
+    - cron: '00 06 * * 1-5' # 11:30 AM IST (Mon-Fri)
+
 jobs:
-   run-postman-tests:
-     runs-on: ubantu-latest
- steps:
-     -  name: Checkout the code
-        uses: actions/checkout@v6.0.1
-        
-     -  name: Install Nodejs and npm
-        uses: actions/setup-node@v6.1.0
+  run-postman-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: '22'
 
-     -  name: Install Newman and Html-extra globally
+      - name: Install Newman and Reporter
         run: |
-            npm intall -g newman
-            npm install -g newman-reporter-htmlextra
+          npm install -g newman
+          npm install -g newman-reporter-htmlextra
 
-     -  name: Run the Postman Collection with newman
+      - name: Run Postman Collection
+        # Note: Ensure testdata is saved as .csv, not .xlsx
         run: |
-            newman run 'Inwarranty-flow-Collection.postman_collection.json' \
-            -e QA.postman_environment.json \
-            -d testdata.csv.xlsx \
-             -r cli,htmlextra
+          newman run 'Inwarranty-flow-Collection.postman_collection.json' \
+          -e QA.postman_environment.json \
+          -d testdata.csv \
+          -r cli,htmlextra --reporter-htmlextra-export results/report.html
+
+      - name: Upload Test Report
+        if: always() # Ensures report is uploaded even if tests fail
+        uses: actions/upload-artifact@v4
+        with:
+          name: postman-html-report
+          path: results/report.html
              
 
         
