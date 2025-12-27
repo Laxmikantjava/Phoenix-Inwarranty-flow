@@ -8,8 +8,8 @@ The Latest report is mailed to the team members using GMAIL SMPT
 
 
 ## About Me ##
-Hi My Name is Jatin Sharma. I have 6.10 years of experience in Automation Testing. My Skillset includes UI Automation with Selenium Webdriver, Playwright and for API testing I used Rest Assured and Postman.
-You can connect with me over: https://www.linkedin.com/in/laxmikant-y-223723122/
+Hi My Name is Laxmikant Yadav. I have 6.10 years of experience in Automation Testing. My Skillset includes UI Automation with Selenium Webdriver, Playwright and for API testing I used Rest Assured and Postman.
+You can connect with me over Linked in: https://www.linkedin.com/in/laxmikant-y-223723122/
 
 ## Testing Coverage ##
 1. Happy Flow Testing
