@@ -3300,7 +3300,8 @@
 							""
 						],
 						"type": "text/javascript",
-						"packages": {}
+						"packages": {},
+						"requests": {}
 					}
 				},
 				{
@@ -3312,7 +3313,8 @@
 							"pm.collectionVariables.set(\"imeiNumber\",imeiNumber);"
 						],
 						"type": "text/javascript",
-						"packages": {}
+						"packages": {},
+						"requests": {}
 					}
 				}
 			],
